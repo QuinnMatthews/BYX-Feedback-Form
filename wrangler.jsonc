@@ -21,7 +21,7 @@
       }
     ]
   },
-  "vars": { "NODE_VERSION": "20.0.0" }
+  "vars": { "NODE_VERSION": "21.1.0" }
   /**
    * Smart Placement
    * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
