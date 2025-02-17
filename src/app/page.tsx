@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedback } from "@/app/actions/submitFeedback";
