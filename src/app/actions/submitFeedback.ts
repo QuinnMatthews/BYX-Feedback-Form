@@ -35,9 +35,9 @@ export async function submitFeedback(
         Message: `Feedback: ${data.feedback}\nName: ${data.name || "N/A"}\nSecret Phrase: ${data.secretPhrase}`,
     });
 
-    // Revalidate the page after successful submission
-    revalidatePath("/");
-    return { message: `Form Submitted` };
+    console.log("Email added to queue successfully");
+
+    return { message: `Form Submitted` }; // TODO: Redirect to success page
   } catch(error) {
     console.error("Failed to add email to queue:", error);
     return { message: "Failed to send email" };
