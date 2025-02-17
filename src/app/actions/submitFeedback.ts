@@ -29,7 +29,7 @@ export async function submitFeedback(
 
   try{
     await getRequestContext().env.EMAIL_QUEUE.send({
-        To: "contact@smubyx.org", // TODO: Use env variable
+        To: ["contact@smubyx.org"], // TODO: Use env variable
         Subject: "New Feedback Submitted",
         Message: `Feedback: ${data.feedback}\nName: ${data.name || "N/A"}\nSecret Phrase: ${data.secretPhrase}`,
     });
