@@ -33,17 +33,32 @@ export default function Home() {
         <img src="./BYXxSMU.png" className="w-[15rem]" alt=""></img>
         <h1 className="text-3xl">Submit Feedback</h1>
         <form action={formAction}>
-      <p>What is our abbreviated secret phrase?*</p>
-      <input type="text" id="secretPhrase" name="secretPhrase" required className="rounded w-[100%] border border-black dark:bg-slate-600 p-2" />
-      <p className="mt-1">Feedback*</p>
-      <textarea id="feedback" name="feedback" required className="rounded w-[100%] border border-black dark:bg-slate-600 p-2" rows={4}></textarea>
-      <p>Name (Optional)</p>
-      <input type="text" id="name" name="name" className="rounded w-[100%] border border-black dark:bg-slate-600 p-2" />
-      <SubmitButton />
-      <p role="status">
-        {state?.message}
-      </p>
-    </form>
+          <p>What is our abbreviated secret phrase?*</p>
+          <input
+            type="text"
+            id="secretPhrase"
+            name="secretPhrase"
+            required
+            className="rounded w-[100%] border border-black dark:bg-slate-600 p-2"
+          />
+          <p className="mt-1">Feedback*</p>
+          <textarea
+            id="feedback"
+            name="feedback"
+            required
+            className="rounded w-[100%] border border-black dark:bg-slate-600 p-2"
+            rows={4}
+          ></textarea>
+          <p>Name (Optional)</p>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className="rounded w-[100%] border border-black dark:bg-slate-600 p-2"
+          />
+          <SubmitButton />
+          <p role="status">{state?.message}</p>
+        </form>
       </main>
     </div>
   );
