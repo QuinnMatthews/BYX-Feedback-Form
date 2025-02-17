@@ -47,7 +47,7 @@ export default function Home() {
       <p>Name (Optional)</p>
       <input type="text" id="name" name="name" className="rounded w-[100%] dark:bg-slate-600 p-2" />
       <SubmitButton />
-      <p aria-live="polite" className="sr-only dark:text-slate-500" role="status">
+      <p role="status">
         {state?.message}
       </p>
     </form>
