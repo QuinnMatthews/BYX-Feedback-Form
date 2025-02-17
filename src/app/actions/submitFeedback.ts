@@ -22,7 +22,7 @@ export async function submitFeedback(
   });
 
   if (!parse.success) {
-    return { message: "Failed to create parse form" };
+    return { message: "Failed to parse form" };
   }
 
   const data = parse.data;
