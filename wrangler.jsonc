@@ -12,6 +12,14 @@
   "pages_build_output_dir": ".vercel/output/static",
   "observability": {
     "enabled": true
+  },
+  "queues": {
+    "producers": [
+      {
+        "queue": "email-queue",
+        "binding": "EMAIL_QUEUE"
+      }
+    ]
   }
   /**
    * Smart Placement
