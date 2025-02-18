@@ -49,7 +49,11 @@ export async function submitFeedback(
 
   if(!turnstileData.success) {
     console.log("turnstile action", turnstileData.action)
+    console.log("turnstile Success", turnstileData.success)
+    console.log("turnstile meta", turnstileData.metadata)
     console.log("turnstile messages", turnstileData.messages)
+    console.log("turnstile error", turnstileData['error-codes'])
+
 
     return { message: "Failed to verify turnstile", isSuccess: false };
   }
