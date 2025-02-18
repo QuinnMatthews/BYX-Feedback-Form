@@ -48,14 +48,11 @@ export async function submitFeedback(
   const turnstileData = (await res.json()) as TurnstileServerValidationResponse
 
   if(!turnstileData.success) {
-    console.log("turnstile action", turnstileData.action)
-    console.log("turnstile Success", turnstileData.success)
-    console.log("turnstile meta", turnstileData.metadata)
     console.log("turnstile messages", turnstileData.messages)
     console.log("turnstile error", turnstileData['error-codes'])
 
 
-    return { message: "Failed to verify turnstile", isSuccess: false };
+    return { message: "Invalid Captcha", isSuccess: false };
   }
 
   // Queue email for sending

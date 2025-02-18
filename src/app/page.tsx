@@ -73,7 +73,7 @@ export default function Home() {
             type="text"
             id="name"
             name="name"
-            className="rounded w-[100%] border border-black dark:bg-slate-600 p-2"
+            className="rounded w-[100%] border border-black dark:bg-slate-600 p-2 mb-3"
           />
           <Turnstile siteKey={turnstileSiteKey} />
           <SubmitButton />
