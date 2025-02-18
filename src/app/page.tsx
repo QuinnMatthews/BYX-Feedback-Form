@@ -29,7 +29,7 @@ function SubmitButton() {
 export default function Home() {
   const [state, formAction] = useActionState(submitFeedback, initialState);
 
-  const turnstileSiteKey = "0x4AAAAAAA9NT9dFAGKSMuvmPxQBpH1Jd_I"
+  const turnstileSiteKey = process.env.TURNSTILE_SITE_KEY
 
   if (state?.isSuccess) {
     return (

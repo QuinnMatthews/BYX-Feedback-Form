@@ -14,3 +14,9 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+module.exports = {
+  env: {
+    TURNSTILE_SITE_KEY: '0x4AAAAAAA9NT0zC-O_k9idi',
+  },
+}

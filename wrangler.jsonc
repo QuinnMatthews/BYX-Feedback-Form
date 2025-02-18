@@ -22,8 +22,7 @@
     ]
   },
   "vars": { 
-    "NODE_VERSION": "22.14.0",
-    "TURNSTILE_SECRET_KEY":"0x4AAAAAAA9NT9dFAGKSMuvmPxQBpH1Jd_I"
+    "NODE_VERSION": "22.14.0"
   }
   /**
    * Smart Placement
