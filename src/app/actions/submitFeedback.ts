@@ -37,8 +37,6 @@ export async function submitFeedback(
   const turnstileSecret = getRequestContext().env.TURNSTILE_SECRET_KEY;
   const turnstileVerifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
 
-  console.log("Turnstile", data.cfturnstileresponse);
-
   const res = await fetch(turnstileVerifyEndpoint, {
     method: 'POST',
     body: `secret=${encodeURIComponent(turnstileSecret)}&response=${encodeURIComponent(data.cfturnstileresponse)}`,
@@ -50,13 +48,16 @@ export async function submitFeedback(
   const turnstileData = (await res.json()) as TurnstileServerValidationResponse
 
   if(!turnstileData.success) {
+    console.log("turnstile action", turnstileData.action)
+    console.log("turnstile messages", turnstileData.messages)
+
     return { message: "Failed to verify turnstile", isSuccess: false };
   }
 
   // Queue email for sending
   try {
     await getRequestContext().env.EMAIL_QUEUE.send({
-      To: ["contact@smubyx.org"], // TODO: Use env variable
+      To: ["contact@smubyx.org"],
       Subject: "New Feedback Submitted",
       Message: `Feedback: ${data.feedback}\nName: ${
         data.name || "N/A"
