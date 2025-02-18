@@ -3,6 +3,7 @@
 import { FormEvent, startTransition, useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedback } from "@/app/actions/submitFeedback";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 const initialState = {
   message: "",
@@ -27,6 +28,8 @@ function SubmitButton() {
 
 export default function Home() {
   const [state, formAction] = useActionState(submitFeedback, initialState);
+
+  const turnstileSiteKey = "0x4AAAAAAA9NT9dFAGKSMuvmPxQBpH1Jd_I"
 
   if (state?.isSuccess) {
     return (
@@ -72,6 +75,7 @@ export default function Home() {
             name="name"
             className="rounded w-[100%] border border-black dark:bg-slate-600 p-2"
           />
+          <Turnstile siteKey={turnstileSiteKey} />
           <SubmitButton />
           <p role="status">{state?.message}</p>
         </form>

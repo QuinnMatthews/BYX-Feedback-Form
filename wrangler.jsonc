@@ -21,7 +21,10 @@
       }
     ]
   },
-  "vars": { "NODE_VERSION": "22.14.0" }
+  "vars": { 
+    "NODE_VERSION": "22.14.0",
+    "TURNSTILE_SECRET_KEY":"0x4AAAAAAA9NT9dFAGKSMuvmPxQBpH1Jd_I"
+  }
   /**
    * Smart Placement
    * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
