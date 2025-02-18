@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { FormEvent, startTransition, useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedback } from "@/app/actions/submitFeedback";
 
@@ -28,7 +28,7 @@ function SubmitButton() {
 export default function Home() {
   const [state, formAction] = useActionState(submitFeedback, initialState);
 
-  if(state?.isSuccess) {
+  if (state?.isSuccess) {
     return (
       <div className="flex flex-col gap-8 row-start-2 items-center">
         <h1 className="text-2xl">Success!</h1>
@@ -37,12 +37,18 @@ export default function Home() {
     );
   }
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    startTransition(() => formAction(formData));
+  };
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center">
         <img src="./BYXxSMU.png" className="w-[15rem]" alt=""></img>
         <h1 className="text-3xl">Submit Feedback</h1>
-        <form action={formAction}>
+        <form onSubmit={handleSubmit}>
           <p>What is our abbreviated secret phrase?*</p>
           <input
             type="text"
