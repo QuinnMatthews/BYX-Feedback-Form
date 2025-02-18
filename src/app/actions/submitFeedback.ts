@@ -6,6 +6,7 @@ import { z } from "zod";
 export async function submitFeedback(
   prevState: {
     message: string;
+    isSuccess: boolean;
   },
   formData: FormData
 ) {
@@ -21,7 +22,7 @@ export async function submitFeedback(
   });
 
   if (!parse.success) {
-    return { message: "Failed to parse form" };
+    return { message: "Failed to parse form", isSuccess: false };
   }
 
   const data = parse.data;
@@ -37,9 +38,9 @@ export async function submitFeedback(
 
     console.log("Email added to queue successfully");
 
-    return { message: `Form Submitted` }; // TODO: Redirect to success page
+    return { message: `Form Submitted`, isSuccess: true }; // TODO: Redirect to success page
   } catch (error) {
     console.error("Failed to add email to queue:", error);
-    return { message: "Failed to send email" };
+    return { message: "Failed to send email", isSuccess: false };
   }
 }

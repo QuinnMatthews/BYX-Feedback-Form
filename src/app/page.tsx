@@ -6,6 +6,7 @@ import { submitFeedback } from "@/app/actions/submitFeedback";
 
 const initialState = {
   message: "",
+  isSuccess: false,
 };
 
 export const runtime = "edge";
@@ -26,6 +27,15 @@ function SubmitButton() {
 
 export default function Home() {
   const [state, formAction] = useActionState(submitFeedback, initialState);
+
+  if(state?.isSuccess) {
+    return (
+      <div className="flex flex-col gap-8 row-start-2 items-center">
+        <h1 className="text-2xl">Success!</h1>
+        <p>Thank you for your feedback!</p>
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
